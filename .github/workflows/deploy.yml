@@ -11,7 +11,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # 获取完整的git历史，Scalingo需要
+        fetch-depth: 0
     
     - uses: scalingo-community/setup-scalingo@v0.1.1
       with:
