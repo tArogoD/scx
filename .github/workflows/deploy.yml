@@ -1,0 +1,38 @@
+name: Deploy to Scalingo
+
+on:
+  push:
+    branches: [ main, master ]  # 当推送到main或master分支时触发
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # 获取完整的git历史，Scalingo需要
+    
+    - name: Setup Scalingo CLI
+      uses: scalingo/scalingo-install-cli-action@v1
+      with:
+        version: latest
+    
+    - name: Login to Scalingo
+      run: |
+        echo "${{ secrets.SCALINGO_API_TOKEN }}" | scalingo login --api-token
+      env:
+        SCALINGO_API_TOKEN: ${{ secrets.SCALINGO_API_TOKEN }}
+    
+    - name: Add Scalingo remote
+      run: |
+        scalingo git-setup --app ${{ secrets.SCALINGO_APP_NAME }} --remote scalingo
+      env:
+        SCALINGO_APP_NAME: ${{ secrets.SCALINGO_APP_NAME }}
+    
+    - name: Deploy to Scalingo
+      run: |
+        git push scalingo HEAD:master --force
+      env:
+        SCALINGO_APP_NAME: ${{ secrets.SCALINGO_APP_NAME }}
