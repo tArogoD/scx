@@ -19,4 +19,4 @@ jobs:
         api_token: ${{ secrets.scalingo_api_token }}
         app_name: 'xcvadadf'
 
-    - run: scalingo restart # will restart all the processes of the app "xcvadadf" in region "osc-fr1"
+    - run: scalingo restart
