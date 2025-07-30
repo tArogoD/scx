@@ -17,6 +17,6 @@ jobs:
       with:
         region: 'osc-fr1'
         api_token: ${{ secrets.scalingo_api_token }}
-        app_name: 'bbossnycmn'
+        app_name: 'xcvadadf'
 
-    - run: scalingo restart # will restart all the processes of the app "bbossnycmn" in region "osc-fr1"
+    - run: scalingo restart # will restart all the processes of the app "xcvadadf" in region "osc-fr1"
