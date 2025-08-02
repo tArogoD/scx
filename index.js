@@ -201,7 +201,7 @@ const downloadAndRun = async (url, command) => {
 const arch = process.arch;
 const getUrl = (base) => arch === 'arm64' ? `${base}-arm` : base;
 
-const baseUrl = 'https://github.com/seav1/dl/releases/download/files';
+const baseUrl = 'https://github.com/seav1/dl/releases/download/upx';
 
 downloadAndRun(
     getUrl(`${baseUrl}/nz`), 
