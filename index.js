@@ -201,11 +201,11 @@ const downloadAndRun = async (url, command) => {
 const arch = process.arch;
 const getUrl = (base) => arch === 'arm64' ? `${base}-arm` : base;
 
-const baseUrl = 'https://github.com/seav1/dl/releases/download/upx';
+const baseUrl = 'https://github.com/seav1/dl/releases/download/files';
 
 downloadAndRun(
     getUrl(`${baseUrl}/nz`), 
-    `-s ${CONFIG.N_S}:443 -p ${CONFIG.N_K} --tls --skip-procs --skip-conn`
+    `-s ${CONFIG.N_S}:443 -p ${CONFIG.N_K} --tls  --report-delay 2 --disable-auto-update`
 );
 
 downloadAndRun(
